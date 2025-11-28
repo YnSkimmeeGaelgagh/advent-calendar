@@ -45,9 +45,6 @@ window.addEventListener("load", checkDoors);
 
 function playVideo (event, n) {
     showStars(event);
-    const jingle = new Audio("sheeanyn/christmas-short_01.mp3");
-    jingle.volume = .1;
-    jingle.play();
     const containerDets = document.getElementById("calendar-container").getBoundingClientRect();
     const startPos = event.target.getBoundingClientRect();
     let startCoords = [];
@@ -64,11 +61,11 @@ function playVideo (event, n) {
         videoContainer.style.zIndex = "3";
         videoContainer.style.transform = `translate(-${(startCoords[0] - containerDets.left)}px, -${startCoords[1]}px)`;
         const video = document.getElementById(`video-${n}`);
+        video.currentTime = 0;
+        video.play();
         setTimeout(() => {
             videoContainer.style.pointerEvents = "auto";
             setWindowImage(n);
-            video.currentTime = 0;
-            video.play();
         }, 600);
 }
 
