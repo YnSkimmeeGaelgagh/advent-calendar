@@ -29,7 +29,7 @@ body {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(7, 1fr);
     width: auto;
-    min-height: 100dvh;
+    height: 100dvh;
     aspect-ratio: 9 / 16;
     flex: 0 0 100%;
     background-image: url("caslyssyn/santa_graphic.webp");
