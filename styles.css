@@ -41,6 +41,7 @@ body {
     padding: 2rem 1.5rem;
     gap: .5rem;
     color: var(--nollick-bane);
+    box-shadow: 0 0 15px 2px #222;
 }
 
 #calendar-top {
