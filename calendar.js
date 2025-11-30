@@ -41,7 +41,37 @@ function checkDoors () {
         if (doors[door].opened) openDoor(null, door, doorToOpen);
     };
 };
+
+function reset () {
+    let clickCount = 0;
+    let clickTime = 700;
+    let countdown;
+    function beginCountdown () {
+        counting = true;
+        clickCount++;
+        clickTime = 700;
+        clearInterval(countdown);
+        countdown = setInterval(() => {
+            clickTime -= 100;
+            if (clickTime == 0) {
+                clearInterval(countdown);
+                clickTime = 700;
+                clickCount = 0;
+            };
+        }, 100);
+        if (clickCount == 6) {
+            localStorage.clear();
+            location.reload();
+        };
+    };
+    return beginCountdown;
+};
+
 window.addEventListener("load", checkDoors);
+const resetTime = reset();
+document.body.addEventListener("keydown", event => {
+    if (event.key === "r") resetTime();
+});
 
 function playVideo (event, n) {
     showStars(event);
@@ -98,8 +128,9 @@ function setWindowImage (n) {
 
 function openDoor (event, n, door) {
     const today = new Date();
-    const todayDate = 11;
-    // if (todayDate < n) return;
+    const month = 11;
+    const todayDate = today.getDate();
+    if (month != 11 || todayDate < n) return;
     if (n > limit) return;
     const target = event ? event.target : door;
     if (!doors[n].opened || door) {
@@ -119,6 +150,7 @@ function makeCalendar () {
         const calendarTop = document.createElement("div");
             calendarTop.id = "calendar-top";
             calendarTop.textContent = "Nollick Ghennal!";
+            calendarTop.addEventListener("click", resetTime);
     calendarContainer.append(calendarTop);
     for (let i = 0; i < 25; i++) {
             let count = i + 1;
@@ -182,43 +214,32 @@ function makeCalendar () {
     };
         const calendarBottom = document.createElement("div");
             calendarBottom.id = "calendar-bottom";
-                sgLogo = document.createElement("img");
-                    sgLogo.id = "sg-logo";
-                    sgLogo.src = "caslyssyn/sg-logo.webp";
-                    let clickCount = 0;
-                    let clickTime = 700;
-                    let countdown;
-                    sgLogo.addEventListener("click", () => {
-                        counting = true;
-                        clickCount++;
-                        clickTime = 700;
-                        clearInterval(countdown);
-                        countdown = setInterval(() => {
-                            clickTime -= 100;
-                            if (clickTime == 0) {
-                                clearInterval(countdown);
-                                clickTime = 700;
-                                clickCount = 0;
-                            };
-                        }, 100);
-                        console.log(clickCount);
-                        if (clickCount == 6) {
-                            console.log('here')
-                            localStorage.clear();
-                            location.reload();
-                        };
-                    });
-                cBA = document.createElement("div");
+                const sgLogoLink = document.createElement("a");
+                    sgLogoLink.id = "sg-logo-link";
+                    sgLogoLink.target = "_blank";
+                    sgLogoLink.rel = "noopener noreferrer";
+                    sgLogoLink.href = "https://manxlanguage.sch.im/";
+                    const sgLogo = document.createElement("img");
+                        sgLogo.id = "sg-logo";
+                        sgLogo.src = "caslyssyn/sg-logo.webp";
+                sgLogoLink.append(sgLogo);
+                const cBA = document.createElement("div");
                     cBA.id = "cba";
                     cBA.textContent = "as";
-                cBB = document.createElement("div");
+                const cBB = document.createElement("div");
                     cBB.id = "cbb";
                     cBB.textContent = "Blein Vie Noa!";
-                bngLogo = document.createElement("img");
-                    bngLogo.id = "bng-logo";
-                    bngLogo.src = "caslyssyn/bng-logo.webp";
+                const bngLogoLink = document.createElement("a");
+                    bngLogoLink.id = "bng-logo-link";
+                    bngLogoLink.target = "_blank";
+                    bngLogoLink.rel = "noopener noreferrer";
+                    bngLogoLink.href = "https://yearofmanx.im/";
+                    const bngLogo = document.createElement("img");
+                        bngLogo.id = "bng-logo";
+                        bngLogo.src = "caslyssyn/bng-logo.webp";
+                    bngLogoLink.append(bngLogo);
             calendarBottom.append(cBA, cBB);
-    calendarContainer.append(sgLogo, calendarBottom, bngLogo);
+    calendarContainer.append(sgLogoLink, calendarBottom, bngLogoLink);
     const starContainer = document.createElement("div");
     starContainer.id = "star-container";
     for (let i = 0; i < 9; i++) {
