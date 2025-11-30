@@ -101,11 +101,15 @@ body {
 }
 
 .number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--nollick-doo);
     border: 1px solid var(--nollick-bane);
     border-radius: 50%;
     width: 35px;
     height: 35px;
+    font-size: 1.25rem;
     text-align: center;
     pointer-events: none;
 }
