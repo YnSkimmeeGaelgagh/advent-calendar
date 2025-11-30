@@ -145,7 +145,7 @@ body {
     pointer-events: none;
 }
 
-#sg-logo {
+#sg-logo-link {
     grid-column: 1;
     grid-row: 7;
     width: 80%;
@@ -153,12 +153,20 @@ body {
     padding-bottom: .5rem;
 }
 
-#bng-logo {
+#sg-logo {
+    width: 100%;
+}
+
+#bng-logo-link {
     grid-column: 5;
     grid-row: 7;
     width: 80%;
     align-self: end;
     padding-bottom: .25rem;
+}
+
+#bng-logo {
+    width: 100%;
 }
 
 #star-container {
