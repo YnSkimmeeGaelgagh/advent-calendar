@@ -6,10 +6,10 @@ const videos = [
     "fer-arran-jinshar",
     "maidjey-millish",
     "hollyn",
-    "?",
-    "?",
-    "?",
-    "?",
+    "rollage",
+    "edd",
+    "moyrneen",
+    "poltag",
     "?",
     "?",
     "?",
@@ -245,7 +245,7 @@ function makeCalendar () {
     for (let i = 0; i < 9; i++) {
         const star = document.createElement("img");
             star.classList.add("star");
-            star.src = "caslyssyn/rollage.webp";
+            star.src = "caslyssyn/rollage-beg.webp";
             star.style.left = `${i * 2}px`;
             star.style.top = `${Math.sin(i)*10}px`;
         starContainer.append(star);
