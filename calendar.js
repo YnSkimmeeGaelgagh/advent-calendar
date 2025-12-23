@@ -130,7 +130,7 @@ function openDoor (event, n, door) {
     const today = new Date();
     const month = today.getMonth();
     const todayDate = today.getDate();
-    if (month != 11 || todayDate < n) return;
+    // if (month != 11 || todayDate < n) return;
     if (n > limit) return;
     const target = event ? event.target : door;
     if (!doors[n].opened || door) {
