@@ -124,6 +124,10 @@ body {
     outline: 3px solid var(--nollick-doo);
 }
 
+#window-24 {
+    background-size: 150% 100%;
+}
+
 .video-container {
     visibility: hidden;
     position: absolute;
